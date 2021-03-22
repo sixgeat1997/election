@@ -2,23 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { bearActions } from "../features/store/stroe";
-import { Table, Switch, Space, Row, Col } from "antd";
+import { Table } from "antd";
 
 const Admin = () => {
-  const [userPoint, setUserpoint] = useState([]);
   const form = useSelector((state) => state.form);
   const bearAction = bindActionCreators(bearActions, useDispatch());
   const allDistrict = useSelector((state) => state.allDistrict); //ดึงข้อมูล
   allDistrict.sort((a, b) => a.number - b.number);
-  const districtChilden = [];
 
   const [xx, setXx] = useState([]);
   const [YY, setYY] = useState();
   const [ZZ, setZZ] = useState();
-  let datax = [...xx];
   const add = () => {
     console.log(form);
     bearAction.addData({ ...form });
+  };
+
+  const resetData = () => {
+    bearAction.resetData();
   };
 
   const columns = [
@@ -92,6 +93,57 @@ const Admin = () => {
       key: "electorate",
       width: "20%",
       align: "center",
+      filters: [
+        {
+          text: "1",
+          value: "1",
+        },
+        {
+          text: "2",
+          value: "2",
+        },
+        {
+          text: "3",
+          value: "3",
+        },
+        {
+          text: "4",
+          value: "4",
+        },
+        {
+          text: "5",
+          value: "5",
+        },
+        {
+          text: "6",
+          value: "6",
+        },
+        {
+          text: "7",
+          value: "7",
+        },
+        {
+          text: "8",
+          value: "8",
+        },
+        {
+          text: "9",
+          value: "9",
+        },
+        {
+          text: "10",
+          value: "10",
+        },
+        {
+          text: "11",
+          value: "11",
+        },
+        {
+          text: "12",
+          value: "12",
+        },
+      ],
+      onFilter: (value, record) => record.electorate.indexOf(value) == 0,
 
       sorter: (a, b) => a.electorate - b.electorate,
     },
@@ -106,31 +158,8 @@ const Admin = () => {
     },
   ];
 
-  let data = [
-    {
-      key: 1,
-      name: "เขต 1",
-      age: 60,
-      children: [
-        {
-          key: 12,
-          name: "หน่วยที่ 1",
-          age: 30,
-          children: [...userPoint],
-        },
-        {
-          key: 13,
-          name: "หน่วยที่ 2",
-          age: 30,
-          children: [...userPoint],
-        },
-      ],
-    },
-  ];
-
   const retrieve = () => {
     test();
-    showTable();
   };
 
   const test = () => {
@@ -146,7 +175,7 @@ const Admin = () => {
             item.number == 13
               ? "นายกเบอร์ " + (+item.number - 12)
               : item.number == 14
-              ? "นายกเบอร์" + (+item.number - 12)
+              ? "นายกเบอร์ " + (+item.number - 12)
               : "หมายเลข " + item.number,
           key: Math.floor(Math.random() * 1000000),
         });
@@ -179,57 +208,11 @@ const Admin = () => {
     setZZ(zz);
   };
 
-  const showTable = async () => {
-    if (allDistrict) {
-      const x = [];
-      await allDistrict.map((item, index) => {
-        const v = {
-          key:
-            "" +
-            item.district +
-            "" +
-            item.electorate +
-            "" +
-            item.team +
-            "" +
-            item.number,
-          name:
-            item.number == 13
-              ? "นายกเบอร์ " + (+item.number - 12)
-              : item.number == 14
-              ? "นายกเบอร์ " + (+item.number - 12)
-              : "หมายเลข " + item.number,
-          point: item.point,
-        };
-        if (item.district == 1 && item.electorate == 1) {
-          x.push(v);
-          if (x.length == 14) {
-            const eletorate = {
-              key: Math.floor(Math.random() * 1000000),
-              name: "หน่วยที่ 1",
-              children: [...x],
-            };
-            districtChilden.push(eletorate);
-          }
-        } else if (item.district == 1 && item.electorate == 2) {
-        }
-      });
-      setUserpoint(x);
-    }
-  };
-
   useEffect(() => {
     bearAction.getData();
     retrieve();
   }, []);
 
-  function TreeData() {
-    return (
-      <>
-        <Table columns={columns} dataSource={data} size="small" />
-      </>
-    );
-  }
   return (
     <div>
       <div>
@@ -260,7 +243,11 @@ const Admin = () => {
           }}
         />
         <button onClick={add}> click</button>
-        <button onClick={retrieve}> retrieve</button>
+        <button onClick={retrieve}> ดึงข้อมูล</button>
+        <button disabled onClick={resetData}>
+          {" "}
+          รีเซ็ต
+        </button>
       </div>
       <h1>เขต 1</h1>
       {xx ? (

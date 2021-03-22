@@ -17,7 +17,7 @@ export const bearActions = {
     const alldata = database.ref("allData/");
     alldata.on("value", (snapshot) => {
       const data = snapshot.val();
-      console.log(Object.values(data));
+      console.log(Object.values(data).length);
       if (data) {
         dispatch({
           type: "GET_DATA",
@@ -39,6 +39,60 @@ export const bearActions = {
 
     //      dispatch({ type: "GET_DATA", data: allData });
     //   });
+  },
+
+  resetData: () => async (dispatch) => {
+    for (let i = 1; i <= 3; i++) {
+      for (let j = 1; j <= 13; j++) {
+        for (let k = 1; k <= 2; k++) {
+          if (k == 1) {
+            for (let l = 1; l <= 6; l++) {
+              const x = {
+                district: i,
+                electorate: j,
+                team: k,
+                number: l,
+                point: 0,
+              };
+              let name = "" + i + "" + j + "" + k + "" + l;
+              console.log(j);
+              database.ref("allData/" + name).set(x);
+            }
+          } else if (k == 2) {
+            for (let m = 7; m < 15; m++) {
+              let th;
+              if (m == 13) {
+                const x = {
+                  district: i,
+                  electorate: j,
+                  team: 1,
+                  number: m,
+                  point: 0,
+                };
+                let name = "" + i + "" + j + "" + 1 + "" + m;
+                console.log(j);
+
+                database.ref("allData/" + name).set(x);
+              } else {
+                const x = {
+                  district: i,
+                  electorate: j,
+                  team: k,
+                  number: m,
+                  point: 0,
+                };
+                let name = "" + i + "" + j + "" + k + "" + m;
+                if (j == 1) {
+                  console.log(j, m);
+                }
+
+                database.ref("allData/" + name).set(x);
+              }
+            }
+          }
+        }
+      }
+    }
   },
 
   addData: (value) => async (dispatch) => {
