@@ -1,0 +1,57 @@
+.btn-card{
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.decrement, .increment{
+    padding: 0px 20px;
+}
+
+.decrement{
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0.8;
+    margin: 5px;
+    background-color:indigo ;
+    width: 100%;
+}
+
+.increment{
+    border-radius: 4px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0.8;
+    margin: 5px;
+    width: 100%;
+    background-color: red;
+
+}
+
+.increment:hover{
+    border-radius: 5px;
+    background-color: yellowgreen;
+}
+
+.decrement:hover{
+    border-radius: 5px;
+    background-color: tomato;
+}
+
+.card-main{
+    padding: 5px 20px;
+    border: #000000;
+    border-style: solid ;
+    border-radius: 6px;
+    margin: 4px;
+}
+
+img{
+    width: 150px;
+    height: 100px;
+}
