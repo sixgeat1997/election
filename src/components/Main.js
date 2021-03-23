@@ -5,7 +5,6 @@ import db from "../_helpers/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { bearActions } from "../features/store/stroe";
-import Item from "antd/lib/list/Item";
 
 const Main = () => {
   let [numberForm, setNumberForm] = useState({

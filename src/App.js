@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
+import Login from "./components/PsuLogin";
 import "./App.css";
 import Main from "./components/Main";
 import Admin from "./components/Admin";
@@ -17,7 +18,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/admin" component={Admin} />
-          {/* <Route path="/count" component={Counter} /> */}
+          <Route path="/login" component={Login} />
         </Switch>
       </Router>
     </div>

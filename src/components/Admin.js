@@ -3,13 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { bearActions } from "../features/store/stroe";
 import { Table } from "antd";
+import { database } from "../_helpers/Firebase";
+import { Button, Input } from "antd";
 
-const Admin = () => {
+const Admin = (props) => {
   const form = useSelector((state) => state.form);
   const bearAction = bindActionCreators(bearActions, useDispatch());
   const allDistrict = useSelector((state) => state.allDistrict); //ดึงข้อมูล
+  const [useData, setUseData] = useState();
   allDistrict.sort((a, b) => a.number - b.number);
 
+  const alldata = database.ref("allData/");
+  alldata.on("value", (snapshot) => {
+    const data = snapshot.val();
+    console.log(Object.values(data).length);
+    if (data) {
+      Object.values(data).sort((a, b) => b.number - a.number);
+    }
+  });
   const [xx, setXx] = useState([]);
   const [YY, setYY] = useState();
   const [ZZ, setZZ] = useState();
@@ -93,57 +104,6 @@ const Admin = () => {
       key: "electorate",
       width: "20%",
       align: "center",
-      filters: [
-        {
-          text: "1",
-          value: "1",
-        },
-        {
-          text: "2",
-          value: "2",
-        },
-        {
-          text: "3",
-          value: "3",
-        },
-        {
-          text: "4",
-          value: "4",
-        },
-        {
-          text: "5",
-          value: "5",
-        },
-        {
-          text: "6",
-          value: "6",
-        },
-        {
-          text: "7",
-          value: "7",
-        },
-        {
-          text: "8",
-          value: "8",
-        },
-        {
-          text: "9",
-          value: "9",
-        },
-        {
-          text: "10",
-          value: "10",
-        },
-        {
-          text: "11",
-          value: "11",
-        },
-        {
-          text: "12",
-          value: "12",
-        },
-      ],
-      onFilter: (value, record) => record.electorate.indexOf(value) == 0,
 
       sorter: (a, b) => a.electorate - b.electorate,
     },
@@ -210,44 +170,61 @@ const Admin = () => {
 
   useEffect(() => {
     bearAction.getData();
-    retrieve();
+    if (!localStorage.getItem("login")) {
+      props.history.push("/login");
+    }
   }, []);
 
   return (
     <div>
       <div>
-        <label>district</label>
-        <input
+        <Button onClick={retrieve}> ดึงข้อมูล</Button>
+        <Button disabled onClick={resetData}>
+          {" "}
+          รีเซ็ต
+        </Button>
+        <Button
+          onClick={() => {
+            localStorage.removeItem("login");
+            props.history.push("/login");
+          }}
+          danger
+        >
+          {" "}
+          ออกจากระบบ
+        </Button>
+        <Input
+          placeholder="เขต"
           onChange={(e) => {
             bearAction.changeDistricr(e.target.value);
           }}
         />
-        <label>electorate</label>
-        <input
+        <Input
+          placeholder="หน่วยที่"
           onChange={(e) => {
             bearAction.changeElec(e.target.value);
           }}
         />
-        <label>team</label>
 
-        <input
+        <Input
+          placeholder="ทีมที่"
           onChange={(e) => {
             bearAction.changeTeam(e.target.value);
           }}
         />
-        <label>number</label>
 
-        <input
+        <Input
+          placeholder="หมายเลข"
           onChange={(e) => {
             bearAction.changeNumber(e.target.value);
           }}
         />
-        <button onClick={add}> click</button>
-        <button onClick={retrieve}> ดึงข้อมูล</button>
-        <button disabled onClick={resetData}>
+        <Button disabled onClick={add}>
           {" "}
-          รีเซ็ต
-        </button>
+          เพิ่มข้อมูล
+        </Button>
+        <br></br>
+        <br></br>
       </div>
       <h1>เขต 1</h1>
       {xx ? (

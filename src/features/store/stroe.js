@@ -17,7 +17,6 @@ export const bearActions = {
     const alldata = database.ref("allData/");
     alldata.on("value", (snapshot) => {
       const data = snapshot.val();
-      console.log(Object.values(data).length);
       if (data) {
         dispatch({
           type: "GET_DATA",
@@ -42,6 +41,8 @@ export const bearActions = {
   },
 
   resetData: () => async (dispatch) => {
+    const qqq = [];
+
     for (let i = 1; i <= 3; i++) {
       for (let j = 1; j <= 13; j++) {
         for (let k = 1; k <= 2; k++) {
@@ -55,8 +56,8 @@ export const bearActions = {
                 point: 0,
               };
               let name = "" + i + "" + j + "" + k + "" + l;
-              console.log(j);
-              database.ref("allData/" + name).set(x);
+              qqq.push({ name: name, value: x });
+              //database.ref("allData/" + name).set(x);
             }
           } else if (k == 2) {
             for (let m = 7; m < 15; m++) {
@@ -70,9 +71,8 @@ export const bearActions = {
                   point: 0,
                 };
                 let name = "" + i + "" + j + "" + 1 + "" + m;
-                console.log(j);
-
-                database.ref("allData/" + name).set(x);
+                qqq.push({ name: name, value: x });
+                //database.ref("allData/" + name).set(x);
               } else {
                 const x = {
                   district: i,
@@ -82,17 +82,28 @@ export const bearActions = {
                   point: 0,
                 };
                 let name = "" + i + "" + j + "" + k + "" + m;
-                if (j == 1) {
-                  console.log(j, m);
-                }
-
-                database.ref("allData/" + name).set(x);
+                qqq.push({ name: name, value: x });
+                //database.ref("allData/" + name).set(x);
               }
             }
           }
         }
       }
     }
+
+    setTimeout(() => {
+      console.log(qqq);
+      if (qqq) {
+        qqq.map((item, index) => {
+          database
+            .ref("allData/" + item.name)
+            .set(item.value)
+            .catch((err) => {
+              console.log(err);
+            });
+        });
+      }
+    }, 5000);
   },
 
   addData: (value) => async (dispatch) => {
