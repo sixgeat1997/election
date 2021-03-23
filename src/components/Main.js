@@ -54,7 +54,6 @@ const Main = () => {
             </Select>
           </Col>
         </Row>
-        <Row> หน่วยที่ {numberForm.unit}</Row>
         <Row></Row>
         <Row>
           <Col span={12}>
