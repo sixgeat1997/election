@@ -115,18 +115,15 @@ const Cards = (props) => {
 
   const addPoint = () => {
     allData.map((item, index) => {
-      if (
-        item.electorate == props.numberForm.unit &&
-        item.district == props.numberForm.district &&
-        item.team == props.team &&
-        item.number == props.number
-      ) {
+      if (item.id == props.mainId) {
+        console.log(item.id);
         bearAction.updatePoint({
           district: item.district,
           electorate: item.electorate,
           team: item.team,
           number: item.number,
           point: +item.point + 1,
+          id: item.id,
         });
       }
     });
@@ -134,12 +131,7 @@ const Cards = (props) => {
 
   const subPoint = () => {
     allData.map((item, index) => {
-      if (
-        item.electorate == props.numberForm.unit &&
-        item.district == props.numberForm.district &&
-        item.team == props.team &&
-        item.number == props.number
-      ) {
+      if (item.id == props.mainId) {
         bearAction.updatePoint({
           district: item.district,
           electorate: item.electorate,
@@ -149,6 +141,7 @@ const Cards = (props) => {
               ? "0"
               : item.number,
           point: +item.point - 1,
+          id: item.id,
         });
       }
     });
@@ -178,6 +171,7 @@ const Cards = (props) => {
               >
                 <div className="">
                   <p>คะแนน :{props.point}</p>
+                  <p>id :{props.mainId}</p>
                   <div className="btn-card">
                     <div className="img-main">
                       <img

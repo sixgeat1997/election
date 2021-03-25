@@ -15,7 +15,7 @@ const Main = () => {
   const { Option } = Select;
   const bearAction = bindActionCreators(bearActions, useDispatch());
   const allDistrict = useSelector((state) => state.allDistrict); //ดึงข้อมูล
-
+  console.log(allDistrict);
   useEffect(() => {
     bearAction.getData();
   }, []);
@@ -74,6 +74,7 @@ const Main = () => {
                           point={item.point}
                           id={item.number - 1}
                           numberForm={numberForm}
+                          mainId={item.id}
                         />
                       </div>
                     );
@@ -90,6 +91,7 @@ const Main = () => {
                           point={item.point}
                           id={item.number - 1}
                           numberForm={numberForm}
+                          mainId={item.id}
                         />
                       </div>
                     );
@@ -115,6 +117,7 @@ const Main = () => {
                           point={item.point}
                           id={item.number - 1}
                           numberForm={numberForm}
+                          mainId={item.id}
                         />
                       </div>
                     );
@@ -131,6 +134,7 @@ const Main = () => {
                           point={item.point}
                           id={item.number - 1}
                           numberForm={numberForm}
+                          mainId={item.id}
                         />
                       </div>
                     );
@@ -183,6 +187,7 @@ const Main = () => {
                           point={item.point}
                           id={item.number - 1}
                           numberForm={numberForm}
+                          mainId={item.id}
                         />
                       </div>
                     );
@@ -199,6 +204,7 @@ const Main = () => {
                           point={item.point}
                           id={item.number - 1}
                           numberForm={numberForm}
+                          mainId={item.id}
                         />
                       </div>
                     );
@@ -224,6 +230,7 @@ const Main = () => {
                           point={item.point}
                           id={item.number - 1}
                           numberForm={numberForm}
+                          mainId={item.id}
                         />
                       </div>
                     );
@@ -240,6 +247,7 @@ const Main = () => {
                           point={item.point}
                           id={item.number - 1}
                           numberForm={numberForm}
+                          mainId={item.id}
                         />
                       </div>
                     );
@@ -292,22 +300,7 @@ const Main = () => {
                           point={item.point}
                           id={item.number - 1}
                           numberForm={numberForm}
-                        />
-                      </div>
-                    );
-                  } else if (
-                    item.electorate == numberForm.unit &&
-                    item.district == numberForm.district &&
-                    item.team == "1"
-                  ) {
-                    return (
-                      <div key={index}>
-                        <Cards
-                          number={item.number}
-                          team={item.team}
-                          point={item.point}
-                          id={item.number - 1}
-                          numberForm={numberForm}
+                          mainId={item.id}
                         />
                       </div>
                     );
@@ -333,22 +326,7 @@ const Main = () => {
                           point={item.point}
                           id={item.number - 1}
                           numberForm={numberForm}
-                        />
-                      </div>
-                    );
-                  } else if (
-                    item.electorate == numberForm.unit &&
-                    item.district == numberForm.district &&
-                    item.team == "2"
-                  ) {
-                    return (
-                      <div key={index}>
-                        <Cards
-                          number={item.number}
-                          team={item.team}
-                          point={item.point}
-                          id={item.number - 1}
-                          numberForm={numberForm}
+                          mainId={item.id}
                         />
                       </div>
                     );

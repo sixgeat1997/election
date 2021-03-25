@@ -1,7 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import db from "../../_helpers/Firebase";
 import { database } from "../../_helpers/Firebase";
 
 const initData = {
@@ -20,7 +19,7 @@ export const bearActions = {
       if (data) {
         dispatch({
           type: "GET_DATA",
-          data: Object.values(data).sort((a, b) => b.number - a.number),
+          data: Object.values(data).sort((a, b) => a.number - b.number),
         });
       }
     });
@@ -39,6 +38,48 @@ export const bearActions = {
     //      dispatch({ type: "GET_DATA", data: allData });
     //   });
   },
+  resetData2: (value) => async (dispatch) => {
+    for (let i = 1; i <= +value.elel; i++) {
+      for (let k = 1; k <= 14; k++) {
+        if (k < 7) {
+          const name = "d" + value.dist + "s" + i + "t" + 1 + "n" + k;
+          const x = {
+            id: name,
+            district: value.dist,
+            electorate: i,
+            team: 1,
+            number: k,
+            point: 0,
+          };
+          database.ref("allData/" + name).set(x);
+        } else {
+          if (k == 13) {
+            const name = "d" + value.dist + "s" + i + "t" + 1 + "n" + k;
+            const x = {
+              id: name,
+              district: value.dist,
+              electorate: i,
+              team: 1,
+              number: k,
+              point: 0,
+            };
+            database.ref("allData/" + name).set(x);
+          } else {
+            const name = "d" + value.dist + "s" + i + "t" + 2 + "n" + k;
+            const x = {
+              id: name,
+              district: value.dist,
+              electorate: i,
+              team: 2,
+              number: k,
+              point: 0,
+            };
+            database.ref("allData/" + name).set(x);
+          }
+        }
+      }
+    }
+  },
 
   resetData: () => async (dispatch) => {
     const qqq = [];
@@ -48,81 +89,73 @@ export const bearActions = {
         for (let k = 1; k <= 2; k++) {
           if (k == 1) {
             for (let l = 1; l <= 6; l++) {
+              let name = "" + i + "" + j + "" + k + "" + l;
+
               const x = {
+                id: name,
                 district: i,
                 electorate: j,
                 team: k,
                 number: l,
                 point: 0,
               };
-              let name = "" + i + "" + j + "" + k + "" + l;
               qqq.push({ name: name, value: x });
-              //database.ref("allData/" + name).set(x);
+              database.ref("allData/" + name).set(x);
             }
           } else if (k == 2) {
             for (let m = 7; m < 15; m++) {
               let th;
               if (m == 13) {
+                let name = "" + i + "" + j + "" + 1 + "" + m;
+
                 const x = {
+                  id: name,
                   district: i,
                   electorate: j,
                   team: 1,
                   number: m,
                   point: 0,
                 };
-                let name = "" + i + "" + j + "" + 1 + "" + m;
                 qqq.push({ name: name, value: x });
-                //database.ref("allData/" + name).set(x);
+                database.ref("allData/" + name).set(x);
               } else {
+                let name = "" + i + "" + j + "" + k + "" + m;
+
                 const x = {
+                  id: name,
                   district: i,
                   electorate: j,
                   team: k,
                   number: m,
                   point: 0,
                 };
-                let name = "" + i + "" + j + "" + k + "" + m;
                 qqq.push({ name: name, value: x });
-                //database.ref("allData/" + name).set(x);
+                database.ref("allData/" + name).set(x);
               }
             }
           }
         }
       }
     }
-
-    setTimeout(() => {
-      console.log(qqq);
-      if (qqq) {
-        qqq.map((item, index) => {
-          database
-            .ref("allData/" + item.name)
-            .set(item.value)
-            .catch((err) => {
-              console.log(err);
-            });
-        });
-      }
-    }, 5000);
   },
 
   addData: (value) => async (dispatch) => {
     // const valueDistrict = db.collection("newElec");
     const name =
-      "" +
+      "d" +
       value.district +
-      "" +
+      "s" +
       value.electorate +
-      "" +
+      "t" +
       value.team +
-      "" +
+      "n" +
       value.number;
     database.ref("allData/" + name).set({
       district: value.district,
       electorate: value.electorate,
       team: value.team,
       number: value.number,
-      point: "0",
+      point: 0,
     });
     // valueDistrict.doc(name).set({
     //   district: value.district,
@@ -136,14 +169,15 @@ export const bearActions = {
   },
   updatePoint: (value) => async (dispatch) => {
     const name =
-      "" +
+      "d" +
       value.district +
-      "" +
+      "s" +
       value.electorate +
-      "" +
+      "t" +
       value.team +
-      "" +
+      "n" +
       value.number;
+
     database.ref("allData/" + name).set({ ...value, point: value.point });
 
     // let allData = [];
