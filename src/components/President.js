@@ -3,7 +3,7 @@ import Tables from "./Tables";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { bearActions } from "../features/store/stroe";
-const President = () => {
+const President = (props) => {
   const bearAction = bindActionCreators(bearActions, useDispatch());
 
   const allDistrict = useSelector((state) => state.allDistrict); //ดึงข้อมูล
