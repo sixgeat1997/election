@@ -10,6 +10,7 @@ import { Switch, Route, Router } from "react-router-dom";
 
 import "antd/dist/antd.css";
 import Tables from "./components/Tables";
+import President from "./components/President";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route exact path="/" component={Main} />
           <Route path="/admin" component={Admin} />
           <Route path="/login" component={Login} />
-          <Route path="/tables" component={Tables} />
+          <Route path="/president" component={President} />
         </Switch>
       </Router>
     </div>

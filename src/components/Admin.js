@@ -294,24 +294,6 @@ const Admin = (props) => {
         showPresident={false}
         title="เขตที่ 3 (สมาชิก)"
       />
-      <Tables
-        allDistrict={allDistrict}
-        district={1}
-        showPresident={true}
-        title="เขตที่ 1 (นายก)"
-      />
-      <Tables
-        allDistrict={allDistrict}
-        district={2}
-        showPresident={true}
-        title="เขตที่ 2 (นายก)"
-      />
-      <Tables
-        allDistrict={allDistrict}
-        district={3}
-        showPresident={true}
-        title="เขตที่ 3 (นายก)"
-      />
     </div>
   );
 };
