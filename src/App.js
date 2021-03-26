@@ -9,6 +9,7 @@ import { history } from "./_helpers/History";
 import { Switch, Route, Router } from "react-router-dom";
 
 import "antd/dist/antd.css";
+import Tables from "./components/Tables";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/" component={Main} />
           <Route path="/admin" component={Admin} />
           <Route path="/login" component={Login} />
+          <Route path="/tables" component={Tables} />
         </Switch>
       </Router>
     </div>

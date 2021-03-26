@@ -5,6 +5,7 @@ import { bearActions } from "../features/store/stroe";
 import { Table } from "antd";
 import { database } from "../_helpers/Firebase";
 import { Button, Input } from "antd";
+import Tables from "./Tables";
 import "./Admin.css";
 
 const Admin = (props) => {
@@ -20,98 +21,9 @@ const Admin = (props) => {
     console.log(form);
     bearAction.addData({ ...form });
   };
-
-  const resetData = () => {
-    bearAction.resetData();
-  };
   const resetData2 = (dis, ele) => {
     bearAction.resetData2({ dist: dis, elel: ele });
   };
-
-  const columns = [
-    {
-      title: "ชื่อ",
-      dataIndex: "name",
-      key: "name",
-      filters: [
-        {
-          text: "หมายเลข 1",
-          value: "หมายเลข 1",
-        },
-        {
-          text: "หมายเลข 2",
-          value: "หมายเลข 2",
-        },
-        {
-          text: "หมายเลข 3",
-          value: "หมายเลข 3",
-        },
-        {
-          text: "หมายเลข 4",
-          value: "หมายเลข 4",
-        },
-        {
-          text: "หมายเลข 5",
-          value: "หมายเลข 5",
-        },
-        {
-          text: "หมายเลข 6",
-          value: "หมายเลข 6",
-        },
-        {
-          text: "หมายเลข 7",
-          value: "หมายเลข 7",
-        },
-        {
-          text: "หมายเลข 8",
-          value: "หมายเลข 8",
-        },
-        {
-          text: "หมายเลข 9",
-          value: "หมายเลข 9",
-        },
-        {
-          text: "หมายเลข 10",
-          value: "หมายเลข 10",
-        },
-        {
-          text: "หมายเลข 11",
-          value: "หมายเลข 11",
-        },
-        {
-          text: "หมายเลข 12",
-          value: "หมายเลข 12",
-        },
-        {
-          text: "นายกเบอร์ 1",
-          value: "นายกเบอร์ 1",
-        },
-        {
-          text: "นายกเบอร์ 2",
-          value: "นายกเบอร์ 2",
-        },
-      ],
-      onFilter: (value, record) => record.name.search(value) == 0,
-    },
-    {
-      title: "หน่วยเลือกตั้ง",
-      dataIndex: "electorate",
-      key: "electorate",
-      width: "20%",
-      align: "center",
-
-      sorter: (a, b) => a.electorate - b.electorate,
-    },
-    {
-      title: "คะแนน",
-      dataIndex: "point",
-      key: "point",
-      width: "20%",
-      align: "center",
-
-      sorter: (a, b) => a.point - b.point,
-    },
-  ];
 
   const retrieve = () => {
     test();
@@ -159,6 +71,7 @@ const Admin = (props) => {
       }
     });
     setXx(xxx);
+    console.log(xxx);
     setYY(yy);
     setZZ(zz);
   };
@@ -362,35 +275,9 @@ const Admin = (props) => {
       {usetables(3)}
       <br></br>
       <br></br>
-
-      {/*<h1>เขต 1</h1>
-      {xx ? (
-        <Table columns={columns} dataSource={xx} bordered size="small" />
-      ) : (
-        ""
-      )}
-      <h1>เขต 2</h1>
-      {xx ? (
-        <Table columns={columns} dataSource={YY} size="small" bordered />
-      ) : (
-        ""
-      )}
-      <h1>เขต 3</h1>
-      {xx ? (
-        <Table columns={columns} dataSource={ZZ} size="small" bordered />
-      ) : (
-        ""
-      )}
-      {allDistrict.map((item, index) => {
-        return (
-          <div key={index}>
-            <p>
-              {index}: เขต: {item.district} หน่วยที่: {item.electorate} ...
-              หมายเลข {item.number} :: {item.point}
-            </p>
-          </div>
-        );
-      })} */}
+      <Tables allDistrict={allDistrict} district={1} />
+      <Tables allDistrict={allDistrict} district={2} />
+      <Tables allDistrict={allDistrict} district={3} />
     </div>
   );
 };

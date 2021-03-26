@@ -1,0 +1,198 @@
+import React, { useEffect, useMemo, useState } from "react";
+import { Bar } from "react-chartjs-2";
+
+const Tables = (props) => {
+  const [data, setData] = useState({});
+  const getDataset = () => {
+    const disDatanum1 = [];
+    const disDatanum2 = [];
+    const disDatanum3 = [];
+    const disDatanum4 = [];
+    const disDatanum5 = [];
+    const disDatanum6 = [];
+    const disDatanum7 = [];
+    const disDatanum8 = [];
+    const disDatanum9 = [];
+    const disDatanum10 = [];
+    const disDatanum11 = [];
+    const disDatanum12 = [];
+    const disDatanum13 = [];
+    const disDatanum14 = [];
+    props.allDistrict.map((item, index) => {
+      if (item.district == props.district && item.number == 1) {
+        disDatanum1.push(item.point);
+      } else if (item.district == props.district && item.number == 2) {
+        disDatanum2.push(item.point);
+      } else if (item.district == props.district && item.number == 3) {
+        disDatanum3.push(item.point);
+      } else if (item.district == props.district && item.number == 4) {
+        disDatanum4.push(item.point);
+      } else if (item.district == props.district && item.number == 5) {
+        disDatanum5.push(item.point);
+      } else if (item.district == props.district && item.number == 6) {
+        disDatanum6.push(item.point);
+      } else if (item.district == props.district && item.number == 7) {
+        disDatanum7.push(item.point);
+      } else if (item.district == props.district && item.number == 8) {
+        disDatanum8.push(item.point);
+      } else if (item.district == props.district && item.number == 9) {
+        disDatanum9.push(item.point);
+      } else if (item.district == props.district && item.number == 10) {
+        disDatanum10.push(item.point);
+      } else if (item.district == props.district && item.number == 11) {
+        disDatanum11.push(item.point);
+      } else if (item.district == props.district && item.number == 12) {
+        disDatanum12.push(item.point);
+      } else if (item.district == props.district && item.number == 13) {
+        disDatanum13.push(item.point);
+      } else if (item.district == props.district && item.number == 14) {
+        disDatanum14.push(item.point);
+      }
+    });
+    setData({
+      ...data,
+      num1: disDatanum1,
+      num2: disDatanum2,
+      num3: disDatanum3,
+      num4: disDatanum4,
+      num5: disDatanum5,
+      num6: disDatanum6,
+      num7: disDatanum7,
+      num8: disDatanum8,
+      num9: disDatanum9,
+      num10: disDatanum10,
+      num11: disDatanum11,
+      num12: disDatanum12,
+      num13: disDatanum13,
+      num14: disDatanum14,
+    });
+  };
+
+  const state = {
+    labels: [
+      "เขต 1",
+      "เขต 2",
+      "เขต 3",
+      "เขต 4",
+      "เขต 5",
+      "เขต 6",
+      "เขต 7",
+      "เขต 8",
+      "เขต 9",
+      "เขต 10",
+      "เขต 11",
+      "เขต 12",
+      "เขต 13",
+    ],
+    datasets: [
+      {
+        label: "เบอร์ 1",
+        backgroundColor: "rgba(752,12,452,1)",
+        data: data.num1 ? Object.assign([], data.num1) : [],
+        //data: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "เบอร์ 2",
+        backgroundColor: "rgba(752,12,452,1)",
+        data: data.num2 ? Object.assign([], data.num2) : [],
+        //sdata: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "เบอร์ 3",
+        backgroundColor: "rgba(752,12,452,1)",
+        data: data.num3 ? Object.assign([], data.num3) : [],
+        //data: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "เบอร์ 4",
+        backgroundColor: "rgba(752,12,452,1)",
+        data: data.num4 ? Object.assign([], data.num4) : [],
+        //sdata: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "เบอร์ 5",
+        backgroundColor: "rgba(752,12,452,1)",
+        data: data.num5 ? Object.assign([], data.num5) : [],
+        //        data: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "เบอร์ 6",
+        backgroundColor: "rgba(752,12,452,1)",
+        data: data.num6 ? Object.assign([], data.num6) : [],
+        //data: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "เบอร์ 7",
+        backgroundColor: "rgba(153, 50, 204, 1 )",
+        data: data.num7 ? Object.assign([], data.num7) : [],
+        //data: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "เบอร์ 8",
+        backgroundColor: "rgba( 153, 50, 204, 1 )",
+        data: data.num8 ? Object.assign([], data.num8) : [],
+        //data: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "เบอร์ 9",
+        backgroundColor: "rgba( 153, 50, 204, 1 )",
+        data: data.num9 ? Object.assign([], data.num9) : [],
+        //data: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "เบอร์ 10",
+        backgroundColor: "rgba( 153, 50, 204, 1 )",
+        data: data.num10 ? Object.assign([], data.num10) : [],
+        //data: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "เบอร์ 11",
+        backgroundColor: "rgba( 153, 50, 204, 1 )",
+        data: data.num11 ? Object.assign([], data.num11) : [],
+        //data: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "เบอร์ 12",
+        backgroundColor: "rgba( 153, 50, 204, 1 )",
+        data: data.num12 ? Object.assign([], data.num12) : [],
+        //data: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "นายกเบอร์ 1",
+        backgroundColor: "rgba(752,12,452,1)",
+        data: data.num13 ? Object.assign([], data.num13) : [],
+        //data: [65, 59, 80, 81, 56],
+      },
+      {
+        label: "นายกเบอร์ 2",
+        backgroundColor: "rgba( 153, 50, 204, 1 )",
+        data: data.num14 ? Object.assign([], data.num14) : [],
+        //data: [65, 59, 80, 81, 56],
+      },
+    ],
+  };
+
+  useMemo(() => {
+    getDataset();
+  }, [props.allDistrict]);
+  return (
+    <div>
+      <Bar
+        data={state}
+        options={{
+          title: {
+            display: true,
+            text: "เขต " + props.district,
+            fontSize: 20,
+          },
+          legend: {
+            display: true,
+            position: "right",
+          },
+        }}
+      />
+    </div>
+  );
+};
+
+export default Tables;
