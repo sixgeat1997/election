@@ -84,92 +84,81 @@ const Tables = (props) => {
       "หน่วยที่ 12",
       "หน่วยที่ 13",
     ],
-    datasets: [
-      {
-        label: "เบอร์ 1",
-        backgroundColor: "#FF6666",
-        data: data.num1 ? Object.assign([], data.num1) : [],
-        //data: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "เบอร์ 2",
-        backgroundColor: "#FF6699",
-        data: data.num2 ? Object.assign([], data.num2) : [],
-        //sdata: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "เบอร์ 3",
-        backgroundColor: "#FF66CC",
-        data: data.num3 ? Object.assign([], data.num3) : [],
-        //data: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "เบอร์ 4",
-        backgroundColor: "#FF66FF",
-        data: data.num4 ? Object.assign([], data.num4) : [],
-        //sdata: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "เบอร์ 5",
-        backgroundColor: "#FF99CC",
-        data: data.num5 ? Object.assign([], data.num5) : [],
-        //        data: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "เบอร์ 6",
-        backgroundColor: "#FFCCFF",
-        data: data.num6 ? Object.assign([], data.num6) : [],
-        //data: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "เบอร์ 7",
-        backgroundColor: "#333366",
-        data: data.num7 ? Object.assign([], data.num7) : [],
-        //data: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "เบอร์ 8",
-        backgroundColor: "#663366",
-        data: data.num8 ? Object.assign([], data.num8) : [],
-        //data: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "เบอร์ 9",
-        backgroundColor: "#663399",
-        data: data.num9 ? Object.assign([], data.num9) : [],
-        //data: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "เบอร์ 10",
-        backgroundColor: "#6633CC",
-        data: data.num10 ? Object.assign([], data.num10) : [],
-        //data: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "เบอร์ 11",
-        backgroundColor: "#9933FF",
-        data: data.num11 ? Object.assign([], data.num11) : [],
-        //data: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "เบอร์ 12",
-        backgroundColor: "#9933CC",
-        data: data.num12 ? Object.assign([], data.num12) : [],
-        //data: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "นายกเบอร์ 1",
-        backgroundColor: "#00EE00",
-        data: data.num13 ? Object.assign([], data.num13) : [],
-        //data: [65, 59, 80, 81, 56],
-      },
-      {
-        label: "นายกเบอร์ 2",
-        backgroundColor: "red",
-        data: data.num14 ? Object.assign([], data.num14) : [],
-        //data: [65, 59, 80, 81, 56],
-      },
-    ],
+    datasets: props.showPresident
+      ? [
+          {
+            label: "นายกเบอร์ 1",
+            backgroundColor: "#FF3399",
+            data: data.num13 ? Object.assign([], data.num13) : [],
+          },
+          {
+            label: "นายกเบอร์ 2",
+            backgroundColor: "#9900CC",
+            data: data.num14 ? Object.assign([], data.num14) : [],
+          },
+        ]
+      : [
+          {
+            label: "เบอร์ 1",
+            backgroundColor: "#FF6666",
+            data: data.num1 ? Object.assign([], data.num1) : [],
+          },
+          {
+            label: "เบอร์ 2",
+            backgroundColor: "#FF6699",
+            data: data.num2 ? Object.assign([], data.num2) : [],
+          },
+          {
+            label: "เบอร์ 3",
+            backgroundColor: "#FF66CC",
+            data: data.num3 ? Object.assign([], data.num3) : [],
+          },
+          {
+            label: "เบอร์ 4",
+            backgroundColor: "#FF66FF",
+            data: data.num4 ? Object.assign([], data.num4) : [],
+          },
+          {
+            label: "เบอร์ 5",
+            backgroundColor: "#FF99CC",
+            data: data.num5 ? Object.assign([], data.num5) : [],
+          },
+          {
+            label: "เบอร์ 6",
+            backgroundColor: "#FFCCFF",
+            data: data.num6 ? Object.assign([], data.num6) : [],
+          },
+          {
+            label: "เบอร์ 7",
+            backgroundColor: "#333366",
+            data: data.num7 ? Object.assign([], data.num7) : [],
+          },
+          {
+            label: "เบอร์ 8",
+            backgroundColor: "#663366",
+            data: data.num8 ? Object.assign([], data.num8) : [],
+          },
+          {
+            label: "เบอร์ 9",
+            backgroundColor: "#663399",
+            data: data.num9 ? Object.assign([], data.num9) : [],
+          },
+          {
+            label: "เบอร์ 10",
+            backgroundColor: "#6633CC",
+            data: data.num10 ? Object.assign([], data.num10) : [],
+          },
+          {
+            label: "เบอร์ 11",
+            backgroundColor: "#9933FF",
+            data: data.num11 ? Object.assign([], data.num11) : [],
+          },
+          {
+            label: "เบอร์ 12",
+            backgroundColor: "#9933CC",
+            data: data.num12 ? Object.assign([], data.num12) : [],
+          },
+        ],
   };
 
   useMemo(() => {
@@ -182,7 +171,7 @@ const Tables = (props) => {
         options={{
           title: {
             display: true,
-            text: "เขต " + props.district,
+            text: props.title,
             fontSize: 20,
           },
           legend: {

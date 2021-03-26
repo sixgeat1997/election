@@ -157,6 +157,7 @@ export const bearActions = {
       number: value.number,
       point: 0,
     });
+
     // valueDistrict.doc(name).set({
     //   district: value.district,
     //   electorate: value.electorate,

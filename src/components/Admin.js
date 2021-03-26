@@ -7,6 +7,7 @@ import { database } from "../_helpers/Firebase";
 import { Button, Input } from "antd";
 import Tables from "./Tables";
 import "./Admin.css";
+import { flushSync } from "react-dom";
 
 const Admin = (props) => {
   const form = useSelector((state) => state.form);
@@ -275,9 +276,42 @@ const Admin = (props) => {
       {usetables(3)}
       <br></br>
       <br></br>
-      <Tables allDistrict={allDistrict} district={1} />
-      <Tables allDistrict={allDistrict} district={2} />
-      <Tables allDistrict={allDistrict} district={3} />
+      <Tables
+        allDistrict={allDistrict}
+        district={1}
+        showPresident={false}
+        title="เขตที่ 1 (สมาชิก)"
+      />
+      <Tables
+        allDistrict={allDistrict}
+        district={2}
+        showPresident={false}
+        title="เขตที่ 2 (สมาชิก)"
+      />
+      <Tables
+        allDistrict={allDistrict}
+        district={3}
+        showPresident={false}
+        title="เขตที่ 3 (สมาชิก)"
+      />
+      <Tables
+        allDistrict={allDistrict}
+        district={1}
+        showPresident={true}
+        title="เขตที่ 1 (นายก)"
+      />
+      <Tables
+        allDistrict={allDistrict}
+        district={2}
+        showPresident={true}
+        title="เขตที่ 2 (นายก)"
+      />
+      <Tables
+        allDistrict={allDistrict}
+        district={3}
+        showPresident={true}
+        title="เขตที่ 3 (นายก)"
+      />
     </div>
   );
 };
