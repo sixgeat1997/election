@@ -171,7 +171,6 @@ const Cards = (props) => {
               >
                 <div className="">
                   <p>คะแนน :{props.point}</p>
-                  <p>id :{props.mainId}</p>
                   <div className="btn-card">
                     <div className="img-main">
                       <img

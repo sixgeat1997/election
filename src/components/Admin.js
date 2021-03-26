@@ -198,7 +198,7 @@ const Admin = (props) => {
               <td>นายกเบอร์ 2</td>
               {allDistrict.map((item, index) => {
                 if (item.district == dis && item.number == 14) {
-                  return <td key={index}>{item.point} </td>;
+                  return <td key={index}>{item.point}</td>;
                 }
               })}
             </tr>

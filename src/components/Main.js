@@ -304,6 +304,24 @@ const Main = () => {
                         />
                       </div>
                     );
+                  } else if (
+                    item.electorate == numberForm.unit &&
+                    item.district == numberForm.district &&
+                    item.team == "1"
+                  ) {
+                    return (
+                      <div key={index}>
+                        <Cards
+                          pre={true}
+                          number={item.number}
+                          team={item.team}
+                          point={item.point}
+                          id={item.number - 1}
+                          numberForm={numberForm}
+                          mainId={item.id}
+                        />
+                      </div>
+                    );
                   }
                 })
               : ""}
@@ -316,6 +334,24 @@ const Main = () => {
                     item.district == numberForm.district &&
                     item.team == "2" &&
                     item.number == 14
+                  ) {
+                    return (
+                      <div key={index}>
+                        <Cards
+                          pre={true}
+                          number={item.number}
+                          team={item.team}
+                          point={item.point}
+                          id={item.number - 1}
+                          numberForm={numberForm}
+                          mainId={item.id}
+                        />
+                      </div>
+                    );
+                  } else if (
+                    item.electorate == numberForm.unit &&
+                    item.district == numberForm.district &&
+                    item.team == "2"
                   ) {
                     return (
                       <div key={index}>
