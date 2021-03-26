@@ -219,6 +219,14 @@ const Admin = (props) => {
   return (
     <div>
       <div>
+        <Button
+          onClick={() => {
+            props.history.push("/president");
+          }}
+        >
+          {" "}
+          Municipal president
+        </Button>
         <Button disabled onClick={retrieve}>
           {" "}
           ดึงข้อมูล

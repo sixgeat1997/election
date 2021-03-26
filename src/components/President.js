@@ -3,6 +3,8 @@ import Tables from "./Tables";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { bearActions } from "../features/store/stroe";
+import { Button } from "antd";
+
 const President = (props) => {
   const bearAction = bindActionCreators(bearActions, useDispatch());
 
@@ -18,6 +20,14 @@ const President = (props) => {
 
   return (
     <div>
+      <Button
+        onClick={() => {
+          props.history.push("/admin");
+        }}
+      >
+        {" "}
+        ย้อนกลับ
+      </Button>
       <Tables
         allDistrict={allDistrict}
         district={1}
