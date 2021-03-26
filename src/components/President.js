@@ -11,6 +11,9 @@ const President = () => {
 
   useEffect(() => {
     bearAction.getData();
+    if (!localStorage.getItem("login")) {
+      props.history.push("/login");
+    }
   }, []);
 
   return (
