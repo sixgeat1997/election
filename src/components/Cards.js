@@ -170,7 +170,7 @@ const Cards = (props) => {
                 bordered={true}
               >
                 <div className="">
-                  <p>คะแนน :{props.point}</p>
+                  <h2>คะแนน : {props.point}</h2>
                   <div className="btn-card">
                     <div className="img-main">
                       <img
@@ -214,9 +214,11 @@ const Cards = (props) => {
                     : "หมายเลข " + props.number
                 }
                 bordered={true}
+                style={{ padding: 0 }}
+                type="inner"
               >
                 <div className="">
-                  <p>คะแนน :{props.point}</p>
+                  <h2>คะแนน : {props.point}</h2>
                   <div className="btn-card">
                     <div className="img-main">
                       <img
@@ -262,7 +264,7 @@ const Cards = (props) => {
                 bordered={true}
               >
                 <div className="">
-                  <p>คะแนน :{props.point}</p>
+                  <h2>คะแนน : {props.point}</h2>
                   <div className="btn-card">
                     <div className="img-main">
                       <img

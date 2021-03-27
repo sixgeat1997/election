@@ -219,31 +219,40 @@ const Admin = (props) => {
   return (
     <div>
       <div>
-        <Button
-          onClick={() => {
-            props.history.push("/president");
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "20px",
           }}
         >
-          {" "}
-          Municipal president
-        </Button>
-        <Button disabled onClick={retrieve}>
-          {" "}
-          ดึงข้อมูล
-        </Button>
-        <Button onClick={() => resetData2(1, 13)}> รีเซ็ตเขต 1</Button>
-        <Button onClick={() => resetData2(2, 12)}> รีเซ็ตเขต 2</Button>
-        <Button onClick={() => resetData2(3, 12)}> รีเซ็ตเขต 3</Button>
-        <Button
-          onClick={() => {
-            localStorage.removeItem("login");
-            props.history.push("/login");
-          }}
-          danger
-        >
-          {" "}
-          ออกจากระบบ
-        </Button>
+          <Button
+            onClick={() => {
+              props.history.push("/president");
+            }}
+          >
+            {" "}
+            Municipal president
+          </Button>
+          <Button disabled onClick={retrieve}>
+            {" "}
+            ดึงข้อมูล
+          </Button>
+          <Button onClick={() => resetData2(1, 13)}> รีเซ็ตเขต 1</Button>
+          <Button onClick={() => resetData2(2, 12)}> รีเซ็ตเขต 2</Button>
+          <Button onClick={() => resetData2(3, 12)}> รีเซ็ตเขต 3</Button>
+          <Button
+            onClick={() => {
+              localStorage.removeItem("login");
+              localStorage.removeItem("user");
+              props.history.push("/login");
+            }}
+            danger
+          >
+            {" "}
+            ออกจากระบบ
+          </Button>
+        </div>
         <Input
           placeholder="เขต"
           onChange={(e) => {
