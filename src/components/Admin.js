@@ -238,9 +238,18 @@ const Admin = (props) => {
             {" "}
             ดึงข้อมูล
           </Button>
-          <Button onClick={() => resetData2(1, 13)}> รีเซ็ตเขต 1</Button>
-          <Button onClick={() => resetData2(2, 12)}> รีเซ็ตเขต 2</Button>
-          <Button onClick={() => resetData2(3, 12)}> รีเซ็ตเขต 3</Button>
+          <Button disabled onClick={() => resetData2(1, 13)}>
+            {" "}
+            รีเซ็ตเขต 1
+          </Button>
+          <Button disabled onClick={() => resetData2(2, 12)}>
+            {" "}
+            รีเซ็ตเขต 2
+          </Button>
+          <Button disabled onClick={() => resetData2(3, 12)}>
+            {" "}
+            รีเซ็ตเขต 3
+          </Button>
           <Button
             onClick={() => {
               localStorage.removeItem("login");

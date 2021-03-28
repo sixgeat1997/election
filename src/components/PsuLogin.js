@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 const PsuLogin = (props) => {
   const admin = {
     user: "admin",
-    pass: "adminok",
+    pass: "adminkathu",
   };
 
   const user = {

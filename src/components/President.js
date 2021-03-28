@@ -12,10 +12,13 @@ const President = (props) => {
   allDistrict.sort((a, b) => a.electorate - b.electorate);
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
   const totalPoint = (num) => {
-    let x = allDistrict
-      .filter((item) => item.number == num)
-      .map((item) => +item.point)
-      .reduce(reducer);
+    let x = [0, 0];
+    x = allDistrict
+      ? allDistrict
+          .filter((item) => item.number == num)
+          .map((item) => +item.point)
+          .reduce(reducer)
+      : x.reducer(reducer);
     return x;
   };
 
