@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Row, Col } from "antd";
+import { Card, Row, Col, Input, Button } from "antd";
 
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -112,6 +112,19 @@ const Cards = (props) => {
   const allDistrict = useSelector((state) => state.allDistrict); //ดึงข้อมูล
 
   const [allData, setData] = useState(allDistrict);
+  const [currentPoint, setCurrent] = useState();
+
+  const updateCurrentPoint = () => {
+    const x = allData.find((item) => item.id == props.mainId);
+    bearAction.updatePoint({
+      district: x.district,
+      electorate: x.electorate,
+      team: x.team,
+      number: x.number,
+      point: currentPoint,
+      id: x.id,
+    });
+  };
 
   const addPoint = () => {
     allData.map((item, index) => {
@@ -194,6 +207,18 @@ const Cards = (props) => {
                     >
                       <h1>-</h1>
                     </div>
+                    <Input
+                      onChange={(e) => {
+                        setCurrent(e.target.value);
+                      }}
+                    />
+                    <Button
+                      onClick={() => {
+                        updateCurrentPoint();
+                      }}
+                    >
+                      อัพเดท
+                    </Button>
                   </div>
                 </div>
               </Card>
@@ -226,6 +251,7 @@ const Cards = (props) => {
                         src={picD2[Math.floor(props.id)]}
                       />
                     </div>
+
                     <div
                       className="increment"
                       onClick={() => {
@@ -272,6 +298,7 @@ const Cards = (props) => {
                         src={picD3[Math.floor(props.id)]}
                       />
                     </div>
+
                     <div
                       className="increment"
                       onClick={() => {
@@ -288,6 +315,15 @@ const Cards = (props) => {
                     >
                       <h1>-</h1>
                     </div>
+
+                    <Input onChange="" />
+                    <Button
+                      onClick={() => {
+                        updateCurrentPoint();
+                      }}
+                    >
+                      อัพเดท
+                    </Button>
                   </div>
                 </div>
               </Card>

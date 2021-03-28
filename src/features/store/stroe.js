@@ -169,6 +169,7 @@ export const bearActions = {
     // dispatch({ type: "ADD_DATA", data: value });
   },
   updatePoint: (value) => async (dispatch) => {
+    console.log(value);
     const name =
       "d" +
       value.district +
@@ -209,6 +210,7 @@ export const bearActions = {
   changeElec: (value) => ({ type: "CHANGE_ELECT", electorate: value }),
   changeTeam: (value) => ({ type: "CHANGE_TEAM", team: value }),
   changeNumber: (value) => ({ type: "CHANGE_NUMBER", number: value }),
+  changePoint: (value) => ({ type: "CHANGE_POINT", point: value }),
 };
 
 const formReducer = (data = initData, action) => {

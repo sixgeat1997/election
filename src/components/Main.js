@@ -30,7 +30,7 @@ const Main = (props) => {
 
   const NavTabs = () => (
     <Tabs>
-      <TabPane key="1">
+      <TabPane key="1111">
         <Row>
           <Col span={24}>
             {" "}
@@ -131,7 +131,7 @@ const Main = (props) => {
           </Col>
         </Row>
       </TabPane>
-      <TabPane key="2">
+      <TabPane key="2222">
         <Row>
           <Col span={24}>
             {" "}
@@ -232,7 +232,7 @@ const Main = (props) => {
           </Col>
         </Row>
       </TabPane>
-      <TabPane key="3">
+      <TabPane key="333">
         <Row>
           <Col span={24}>
             <div style={{ display: "flex", justifyContent: "center" }}>

@@ -22,6 +22,25 @@ const Admin = (props) => {
     console.log(form);
     bearAction.addData({ ...form });
   };
+  const [currentPoint, setCurrent] = useState();
+
+  const updateCurrentPoint = () => {
+    const name =
+      "d" +
+      form.district +
+      "s" +
+      form.electorate +
+      "t" +
+      form.team +
+      "n" +
+      form.number;
+    const x = allDistrict.find((item) => item.id == name);
+    console.log(x);
+    x
+      ? bearAction.updatePoint({ ...x, point: +currentPoint })
+      : alert("กรอกข้อมูลผิด");
+  };
+
   const resetData2 = (dis, ele) => {
     bearAction.resetData2({ dist: dis, elel: ele });
   };
@@ -288,10 +307,14 @@ const Admin = (props) => {
             bearAction.changeNumber(e.target.value);
           }}
         />
-        <Button disabled onClick={add}>
-          {" "}
-          เพิ่มข้อมูล
-        </Button>
+        <Input
+          placeholder="คะแนน"
+          onChange={(e) => {
+            bearAction.changePoint(e.target.value);
+            setCurrent(e.target.value);
+          }}
+        />
+        <Button onClick={updateCurrentPoint}> อัพเดทข้อมูล</Button>
         <br></br>
         <br></br>
       </div>
