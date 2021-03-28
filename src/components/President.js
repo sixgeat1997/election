@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Tables from "./Tables";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -10,6 +10,14 @@ const President = (props) => {
 
   const allDistrict = useSelector((state) => state.allDistrict); //ดึงข้อมูล
   allDistrict.sort((a, b) => a.electorate - b.electorate);
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  const totalPoint = (num) => {
+    let x = allDistrict
+      .filter((item) => item.number == num)
+      .map((item) => +item.point)
+      .reduce(reducer);
+    return x;
+  };
 
   useEffect(() => {
     bearAction.getData();
@@ -17,7 +25,8 @@ const President = (props) => {
       props.history.push("/login");
     }
   }, []);
-
+  let tm2;
+  let tm1;
   return (
     <div>
       <Button
@@ -28,6 +37,11 @@ const President = (props) => {
         {" "}
         ย้อนกลับ
       </Button>
+
+      <div>
+        <h1>{"คะแนนรวมเบอร์ 1 : " + totalPoint(13)}</h1>
+        <h1>{"คะแนนรวมเบอร์ 2 : " + totalPoint(14)}</h1>
+      </div>
       <Tables
         allDistrict={allDistrict}
         district={1}

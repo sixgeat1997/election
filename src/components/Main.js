@@ -358,6 +358,7 @@ const Main = (props) => {
           style={{ width: 120 }}
           onChange={(key) => {
             setUnitDistrict({ ...unitDistrict, district: key });
+            setShow(false);
           }}
         >
           <Option value="1">เขตที่ 1</Option>
@@ -369,6 +370,7 @@ const Main = (props) => {
           style={{ width: 120 }}
           onChange={(value) => {
             setUnitDistrict({ ...unitDistrict, unit: value });
+            setShow(false);
           }}
         >
           <Option value="1">หน่วยที่ 1</Option>
